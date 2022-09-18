@@ -1,0 +1,40 @@
+{%  macro lith_or_dark_mode(element) %}
+	{% if request.args.get('mode') == "dark" %}
+
+	<a href="{{ request.path }}">
+		Escolha modo brilhante
+		<style type="text/css">
+			{{element}} {
+				background-color: #343a40;
+				color: #fff;
+			}
+
+			{{ element }} a {
+				color: #00BFFF !important;
+			}
+		</style>
+	</a>
+	{% else %}
+		<a href="{{ request.path }}?mode=dark">Modo noturno</a>
+	{% endif %}
+{% endmacro %}
+
+
+{% macro add_emoji(student, lista_de_estudantes) %}
+  {% set high_score = lista_de_estudantes|map(attribute="score")|max %}
+
+  {% if student.score == high_score %}
+    ⭐️
+  {% elif student.score > 80 %}
+    🙂
+  {% else %}
+    🙁
+  {% endif %}
+{% endmacro %}
+
+{% macro nav_link(menu_item) %}
+  {% set mode = "?mode=dark" if request.args.get("mode") == "dark" else "" %}
+  {% if request.endpoint == menu_item %}
+    ←
+  {% endif %}
+{% endmacro %}

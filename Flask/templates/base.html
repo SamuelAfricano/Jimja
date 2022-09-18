@@ -1,0 +1,23 @@
+{% import "macro.html"  as macro %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block titulo %} {{ titulo }} {% endblock %}</title>
+</head>
+<body>
+	<header>
+		{% include "_navigation.html" %}
+	</header>
+	{% block conteudo  %}
+
+		<h1>Bem vindo {{ titulo }}</h1>
+	{% endblock %}
+
+	<footer>
+		{{ macro.lith_or_dark_mode("body")}}
+	</footer>
+</body>
+</html>

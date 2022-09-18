@@ -1,0 +1,6 @@
+<nav>
+{% for menu_item in ["home", "resultado"] %}
+  <a href="{{ url_for(menu_item) }}">{{ menu_item|upper }}</a>
+  {{ macro.nav_link(menu_item)}}
+{% endfor %}
+</nav>

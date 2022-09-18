@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+<h1>{{ teste }} - {{ titulo}}</h1>
+	<ul>
+		{% for student in estudantes|sort(attribute="name")
+			|sort(attribute="score", reverse=true) %}
+		<li>
+			{{ macro.add_emoji(student, estudantes) }}
+			<em>{{ student.name }}:</em> 
+      		{{ student.score }}/{{ max_score }}
+    	</li>
+  		{% endfor %}
+		</li>
+	</ul>
+{% endblock %}
